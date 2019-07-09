@@ -1,19 +1,31 @@
 {
-  "name": "prisma",
+  "name": "prisma-experiments",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node client-example.ts",
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly nexus-server.ts",
+    "generate": "prisma generate",
+    "postgenerate": "nexus-prisma-generate --client ./generated/prisma-client --output ./generated/nexus-prisma",
+    "deploy": "prsima deploy"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "graphql": "^14.4.2",
+    "graphql-yoga": "^1.18.0",
+    "nexus": "^0.12.0-beta.6",
+    "nexus-prisma": "^0.3.7",
     "prisma-client-lib": "^1.34.1"
   },
   "devDependencies": {
+    "nexus-prisma-generate": "^0.3.7",
+    "prisma": "^1.34.1",
     "ts-node": "^8.3.0",
+    "ts-node-dev": "^1.0.0-pre.40",
     "typescript": "^3.5.3"
   }
 }
