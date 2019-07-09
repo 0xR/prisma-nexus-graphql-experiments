@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node client-example.ts",
+    "client:dev": "ts-node-dev --no-notify --respawn --transpileOnly client-example.ts",
     "dev": "ts-node-dev --no-notify --respawn --transpileOnly nexus-server.ts",
     "generate": "prisma generate",
     "postgenerate": "nexus-prisma-generate --client ./generated/prisma-client --output ./generated/nexus-prisma",
