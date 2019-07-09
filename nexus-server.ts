@@ -3,6 +3,7 @@ import datamodelInfo from "./generated/nexus-prisma";
 import * as path from "path";
 import { prismaObjectType, makePrismaSchema } from "nexus-prisma";
 import { GraphQLServer } from "graphql-yoga";
+import { rule, shield, and, or, not } from 'graphql-shield'
 
 const Query = prismaObjectType({
   name: "Query",
@@ -55,8 +56,24 @@ const schema = makePrismaSchema({
   }
 });
 
+
+// Authorization
+// const isAdmin = rule()(async (parent, args, ctx, info) => {
+//   return ctx.authorization === 'admin';
+// })
+
+// const permissions = shield({
+//   User: {
+//     password: isAdmin
+//   }
+// })
+
 const server = new GraphQLServer({
   schema,
-  context: { prisma }
+  context: ({ request }) => ({
+    prisma,
+    // authorization: request.get('Authorization')
+  }),
+  // middlewares: [permissions]
 });
 server.start(() => console.log("Server is running on http://localhost:4000"));
