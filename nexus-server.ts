@@ -14,18 +14,19 @@ const Query = prismaObjectType({
 const Mutation = prismaObjectType({
   name: "Mutation",
   definition(t) {
-    t.field("createUser", {
-      ...t.prismaType.createUser,
-      args: {
-        ...t.prismaType.createUser.args
-      },
-      resolve(root, args, ctx) {
-        if (args.data.password !== "asdf") {
-          throw new Error("invalid password");
-        }
-        return t.prismaType.createUser.resolve(root, args, ctx);
-      }
-    });
+    t.prismaFields(["*"]);
+    // t.field("createUser", {
+    //   ...t.prismaType.createUser,
+    //   args: {
+    //     ...t.prismaType.createUser.args
+    //   },
+    //   resolve(root, args, ctx) {
+    //     if (args.data.password !== "asdf") {
+    //       throw new Error("invalid password");
+    //     }
+    //     return t.prismaType.createUser.resolve(root, args, ctx);
+    //   }
+    // });
   }
 });
 
