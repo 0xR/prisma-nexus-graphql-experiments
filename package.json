@@ -9,7 +9,7 @@
     "dev": "ts-node-dev --no-notify --respawn --transpileOnly nexus-server.ts",
     "generate": "prisma generate",
     "postgenerate": "nexus-prisma-generate --client ./generated/prisma-client --output ./generated/nexus-prisma",
-    "deploy": "prsima deploy"
+    "deploy": "prisma deploy"
   },
   "keywords": [],
   "author": "",
